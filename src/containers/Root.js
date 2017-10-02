@@ -8,9 +8,14 @@ const store = configureStore()
 export default class Root extends Component {
   render() {
     return (
+      <div>
+      <header className="App-header">
+        <h1 className="App-title">My Reddit</h1>
+      </header>
       <Provider store={store}>
         <App />
       </Provider>
+      </div>
     )
   }
 }

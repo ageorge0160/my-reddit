@@ -7,49 +7,57 @@ import {
 import './App.css';
 import { Provider } from 'react-redux';
 import Home from './components/Home';
-import Feed from './components/Feed';
+import Posts from './components/Posts';
 import Details from './components/Details';
-
-
-
-// import {selectSubreddit, fetchPostsIfNeeded } from './actions'
-
-// import App from './App';
-// import registerServiceWorker from './registerServiceWorker';
-//
-// const loggerMiddleware = createLogger()
-// const store = createStore(
-//   rootReducer,
-//   applyMiddleware(
-//     thunkMiddleware,
-//     loggerMiddleware
-//   )
-// )
-//
-// store.dispatch(selectSubreddit('outdoors'))
-// store.dispatch(fetchPostsIfNeeded('outdoors')).then(() => console.log(store.getState()))
-
-
+import {selectedSubreddit, fetchPostsIfNeeded, invalidateSubreddit} from './actions'
 
 class App extends Component {
+  constructor (props) {
+    super(props)
+    this.handleChange = this.handleChange.bind(this)
+    this.handleRefresh = this.handleRefresh.bind(this)
+  }
+
+  componentDidMount() {
+    const { dispatch, selectedSubreddit } = this.props
+    dispatch(fetchPostsIfNeeded(selectedSubreddit))
+  }
+
+  componentDidUpdate(prevProps) {
+    if (this.props.selectedSubreddit !== prevProps.selectedSubreddit) {
+      const { dispatch, selectedSubreddit} = this.props
+      dispatch(fetchPostsIfNeeded(selectedSubreddit))
+    }
+  }
+
+  handleChange(nextSubreddit) {
+    this.props.dispatch(selectedSubreddit(nextSubreddit))
+    this.props.dispatch(fetchPostsIfNeeded(nextSubreddit))
+  }
+
+  handleRefresh(event) {
+    event.preventDefault();
+    const {dispatch, selectedSubreddit} = this.props
+    dispatch(invalidateSubreddit(selectedSubreddit))
+    dispatch(fetchPostsIfNeeded(selectedSubreddit))
+  }
+
   render() {
+    const {selectedSubreddit, posts, isFetching, lastUpdated} = state
     return (
       <div className="App">
-        <header className="App-header">
-          <h1 className="App-title">My Reddit</h1>
-        </header>
-        <body>
-          <NavBar />
-          <Provider store={store}>
-          <Router>
-          <Route exact path="/" component={Home} />
-          <Route exact path="/feed" component={Feed} />
-          <Route path="/(:filter)" component={Details} />
-          </Router>
-          </Provider>
-        </body>
+        <SubFilter value={selectedSubreddit} onChange={this.handleChange} options={['reactjs', 'frontend']} />
+        <p> {lastUpdated && <span> Last updated at {new Date(lastUpdates).toLocaleTimeString()}.{' '}</span>}
+          {!isFetching && <a href="#" onClick={this.handleRefresh}>Refresh</a>}
+        </p>
+        {isFetching && posts.length === 0 && <h2>Loading...</h2>}
+        {!isFetching && posts.length === 0 && <h2>Empty.</h2>}
+        {posts.length > 0 &&
+          <div style={{opacity: isFetching ? 0.5 : 1}}>
+          <Posts posts={posts} />
+        </div>}
       </div>
-    );
+    )
   }
 }
 

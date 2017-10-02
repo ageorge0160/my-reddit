@@ -2,7 +2,7 @@ import fetch from 'isomorphic-fetch'
 //select subreddit to display or refresh subreddit
 export const SELECT_SUBREDDIT = 'SELECT_SUBREDDIT'
 
-export function selectSubreddit(subreddit) {
+export function selectedSubreddit(subreddit) {
   return {
     type: SELECT_SUBREDDIT,
     subreddit
