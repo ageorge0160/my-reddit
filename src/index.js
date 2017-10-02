@@ -9,7 +9,7 @@ import './index.css';
 import App from './App';
 import registerServiceWorker from './registerServiceWorker';
 
-const loggerMiddelware = createLogger()
+const loggerMiddleware = createLogger()
 const store = createStore(
   rootReducer,
   applyMiddleware(
@@ -18,8 +18,8 @@ const store = createStore(
   )
 )
 
-store.dispatch(selectSubreddit('reactjs'))
-store.dispatch(fetchPosts('reactjs')).then(() => console.log(store.getState()))
+store.dispatch(selectSubreddit('outdoors'))
+store.dispatch(fetchPosts('outdoors')).then(() => console.log(store.getState()))
 
 
 ReactDOM.render(<App />, document.getElementById('root'));
