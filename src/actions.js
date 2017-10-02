@@ -16,3 +16,13 @@ export function invalidateSubreddit(subreddit) {
     subreddit
   }
 };
+
+//fetch posts dispatch action
+export const REQUEST_POSTS = 'REQUEST_POSTS'
+
+export function requestPosts(subreddit) {
+  return {
+    type: REQUEST_POSTS,
+    subreddit
+  }
+}
