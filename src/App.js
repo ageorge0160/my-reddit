@@ -82,4 +82,4 @@ function mapStateToProps(state) {
   }
 }
 
-export default connect(napStateToProps)(App)
+export default connect(mapStateToProps)(App)
