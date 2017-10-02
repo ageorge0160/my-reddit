@@ -11,11 +11,9 @@ import Feed from './components/Feed';
 import Details from './components/Details';
 
 
-// import thunkMiddleware from 'redux-thunk';
-// import { createLogger } from 'redux-logger';
-// import { createStore, applyMiddleware } from 'redux'
+
 // import {selectSubreddit, fetchPostsIfNeeded } from './actions'
-// import rootReducer from './reducers'
+
 // import App from './App';
 // import registerServiceWorker from './registerServiceWorker';
 //

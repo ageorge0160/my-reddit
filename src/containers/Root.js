@@ -1,9 +1,9 @@
 import React, { Component } from 'react'
 import { Provider } from 'react-redux'
-import { createStore, applyMiddleware } from 'redux'
-import App from './App'
+import { configureStore } from '../configureStore'
+import App from '../App'
 
-const store = createStore()
+const store = configureStore()
 
 export default class Root extends Component {
   render() {
