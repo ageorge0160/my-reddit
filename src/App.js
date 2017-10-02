@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 import './App.css';
-import {selectedSubreddit, fetchPostsIfNeeded, invalidateSubreddit} from './actions'
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import Posts from '../components/Posts'
-import SubFilter from '../components/SubFilter'
+import {selectSubreddit, fetchPostsIfNeeded, invalidateSubreddit} from './actions'
+import SubFilter from './components/SubFilter'
+import Posts from './components/Posts'
 
 class App extends Component {
   constructor (props) {
@@ -26,7 +26,7 @@ class App extends Component {
   }
 
   handleChange(nextSubreddit) {
-    this.props.dispatch(selectedSubreddit(nextSubreddit))
+    this.props.dispatch(selectSubreddit(nextSubreddit))
     this.props.dispatch(fetchPostsIfNeeded(nextSubreddit))
   }
 
@@ -38,11 +38,11 @@ class App extends Component {
   }
 
   render() {
-    const {selectedSubreddit, posts, isFetching, lastUpdated} = state
+    const {selectedSubreddit, posts, isFetching, lastUpdated} = this.props
     return (
       <div className="App">
         <SubFilter value={selectedSubreddit} onChange={this.handleChange} options={['reactjs', 'frontend']} />
-        <p> {lastUpdated && <span> Last updated at {new Date(lastUpdates).toLocaleTimeString()}.{' '}</span>}
+        <p> {lastUpdated && <span> Last updated at {new Date(lastUpdated).toLocaleTimeString()}.{' '}</span>}
           {!isFetching && <a href="#" onClick={this.handleRefresh}>Refresh</a>}
         </p>
         {isFetching && posts.length === 0 && <h2>Loading...</h2>}
