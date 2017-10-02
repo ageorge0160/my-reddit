@@ -1,16 +1,10 @@
 import React, { Component } from 'react';
-import NavBar from '../src/components/NavBar';
-import {
-  BrowserRouter as Router,
-  Route
-} from 'react-router-dom';
 import './App.css';
-import { Provider } from 'react-redux';
-import Home from './components/Home';
-import Posts from './components/Posts';
-import Details from './components/Details';
 import {selectedSubreddit, fetchPostsIfNeeded, invalidateSubreddit} from './actions'
 import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
+import Posts from '../components/Posts'
+import SubFilter from '../components/SubFilter'
 
 class App extends Component {
   constructor (props) {
