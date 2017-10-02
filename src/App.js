@@ -10,6 +10,7 @@ import Home from './components/Home';
 import Posts from './components/Posts';
 import Details from './components/Details';
 import {selectedSubreddit, fetchPostsIfNeeded, invalidateSubreddit} from './actions'
+import PropTypes from 'prop-types';
 
 class App extends Component {
   constructor (props) {
@@ -59,6 +60,14 @@ class App extends Component {
       </div>
     )
   }
+}
+
+App.propTypes = {
+  selectedSubreddit: PropTypes.string.isRequired,
+  posts: PropTypes.array.isRequired,
+  isFetching: PropTypes.bool.isRequired,
+  lastUpdated: PropTypes.number,
+  dispatch: PropTypes.func.isRequired
 }
 
 export default App;
