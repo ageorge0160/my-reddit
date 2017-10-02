@@ -1,5 +1,5 @@
 import fetch from 'isomorphic-fetch'
-//select subreddit to display or refresh subreddit
+
 export const SELECT_SUBREDDIT = 'SELECT_SUBREDDIT'
 
 export function selectedSubreddit(subreddit) {
@@ -18,7 +18,6 @@ export function invalidateSubreddit(subreddit) {
   }
 };
 
-//fetch posts dispatch action
 export const REQUEST_POSTS = 'REQUEST_POSTS'
 
 export function requestPosts(subreddit) {
@@ -28,7 +27,6 @@ export function requestPosts(subreddit) {
   }
 }
 
-//for taking in the posts
 export const RECEIVE_POSTS = 'RECEIVE_POSTS'
 
 export function receivePosts(subreddit, json) {
@@ -40,11 +38,10 @@ export function receivePosts(subreddit, json) {
 }
 
 function fetchPosts(subreddit) {
-  return function (dispatch){
+  return dispatch => {
     dispatch(requestPosts(subreddit))
     return fetch(`https://www.reddit.com/r/${subreddit}.json`)
     .then(resp => resp.json(),
-      error => console.log('ERROR', error))
     .then(json => dispatch(receivePosts(subreddit, json)))
   }
 }
@@ -64,8 +61,6 @@ export function fetchPostsIfNeeded(subreddit) {
   return (dispatch, getState) => {
     if (shouldFetchPosts(getState(), subreddit)) {
       return dispatch(fetchPosts(subreddit))
-    } else {
-      return Promise.resolve()
     }
   }
 }
