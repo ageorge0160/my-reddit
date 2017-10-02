@@ -26,3 +26,14 @@ export function requestPosts(subreddit) {
     subreddit
   }
 }
+
+//for taking in the posts
+export const RECEIVE_POSTS = 'RECEIVE_POSTS'
+
+export function receivePosts(subreddit, json) {
+  return {
+    type: RECEIVE_POSTS,
+    subreddit,
+    posts: json.data.children.map(child =>child.data), receivedAt: Date.now()
+  }
+}
