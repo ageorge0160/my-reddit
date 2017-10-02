@@ -18,16 +18,14 @@ class App extends Component {
           <h1 className="App-title">My Reddit</h1>
         </header>
         <body>
-          <div>
-            <Router>
-                <div>
-                  <NavBar />
-                  <Route exact path="/" component={Home} />
-                  <Route exact path="/feed" component={Feed} />
-                  <Route exact path="/details" component={Details} />
-                </div>
-            </Router>
-          </div>
+          <NavBar />
+          <Provider store={store}>
+          <Router>
+          <Route exact path="/" component={Home} />
+          <Route exact path="/feed" component={Feed} />
+          <Route path="/(:filter)" component={Details} />
+          </Router>
+          </Provider>
         </body>
       </div>
     );
