@@ -5,6 +5,7 @@ import {
   Route
 } from 'react-router-dom';
 import './App.css';
+import { Provider } from 'react-redux';
 import Home from './components/Home';
 import Feed from './components/Feed';
 import Details from './components/Details';
