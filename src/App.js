@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import './App.css';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import {selectSubreddit, fetchPostsIfNeeded, invalidateSubreddit} from './actions/actions'
+import {selectSubreddit, fetchPostsIfNeeded, invalidateSubreddit} from './actions'
 import SubFilter from './components/SubFilter'
 import Posts from './components/Posts'
 
