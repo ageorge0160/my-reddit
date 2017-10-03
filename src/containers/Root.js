@@ -10,7 +10,7 @@ export default class Root extends Component {
     return (
       <div>
       <header className="App-header">
-        <h1 className="App-title">MY REDDIT</h1>
+        <h1 className="App-title">MY SUBREDDITS</h1>
       </header>
       <Provider store={store}>
         <App />

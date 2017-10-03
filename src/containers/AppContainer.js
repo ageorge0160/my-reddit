@@ -8,7 +8,7 @@ import Home from '../components/Home';
 import Root from '../containers/Root';
 
 
-const AppContainer = (props) => {
+const AppContainer = () => {
   return (
     <Router>
       <div>
