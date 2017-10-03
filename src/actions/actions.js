@@ -1,5 +1,6 @@
 import fetch from 'isomorphic-fetch'
 import api from '../api/api'
+import * as types from './actionTypes';
 
 export function loadPosts() {
   return function(dispatch) {
@@ -7,6 +8,10 @@ export function loadPosts() {
       dispatch(loadPostsSuccess(posts));
     }).catch(error => {throw(error)})
   }
+}
+
+export function loadPostsSuccess(posts) {
+  return {type: 'LOAD_POSTS_SUCCESS', posts}
 }
 
 // export const SELECT_SUBREDDIT = 'SELECT_SUBREDDIT'
