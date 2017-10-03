@@ -6,7 +6,7 @@ import {
   RECEIVE_POSTS
 } from './actions'
 
-function selectedSubreddit(state = 'boulering', action) {
+function selectedSubreddit(state = 'bouldering', action) {
   switch (action.type) {
     case SELECT_SUBREDDIT:
       return action.subreddit

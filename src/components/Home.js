@@ -1,5 +1,4 @@
 import React from 'react';
-import { Button } from 'react-bootstrap';
 
 const Home = () => {
   return (
@@ -7,9 +6,13 @@ const Home = () => {
     <header className="App-header">
       <h1 className="App-title">WELCOME TO MY REDDIT</h1>
     </header>
-      <Button bsStyle="success" bsSize="small" onClick={Home}>
+    <div className='button_div'>
+      <form action='posts'>
+      <button className='button' onclick="location.href='posts.html'">
         View Posts
-      </Button>
+      </button>
+      </form>
+      </div>
     </div>
   );
 };

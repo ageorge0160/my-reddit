@@ -28,3 +28,16 @@
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }
 }
+
+.button {
+  background: #555;
+  align: center;
+  color: white;
+  font-size: large;
+}
+
+.button_div {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
