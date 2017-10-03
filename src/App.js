@@ -43,7 +43,7 @@ class App extends Component {
       <div className="App">
         <SubFilter value={selectedSubreddit} onChange={this.handleChange} options={['reactjs', 'frontend']} />
         <p> {lastUpdated && <span> Last updated at {new Date(lastUpdated).toLocaleTimeString()}.{' '}</span>}
-          {!isFetching && <a href="#" onClick={this.handleRefresh}>Refresh</a>}
+          {!isFetching && <button onClick={this.handleRefresh}>Refresh</button>}
         </p>
         {isFetching && posts.length === 0 && <h2>Loading...</h2>}
         {!isFetching && posts.length === 0 && <h2>Empty.</h2>}

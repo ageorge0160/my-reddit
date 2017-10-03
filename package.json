@@ -3,8 +3,8 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "babel-polyfill": "^6.26.0",
     "react": "^16.0.0",
+    "react-bootstrap": "^0.31.3",
     "react-dom": "^16.0.0",
     "react-redux": "^5.0.6",
     "react-router": "^4.2.0",
@@ -19,5 +19,8 @@
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject"
+  },
+  "devDependencies": {
+    "babel-polyfill": "^6.26.0"
   }
 }

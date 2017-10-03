@@ -1,13 +1,13 @@
 import React from 'react';
-import { NavLink } from 'react-router-dom';
+import { Button } from 'react-bootstrap';
 
 const Home = () => {
   return (
     <div>
       <h1>Welcome to My Reddit</h1>
-      <NavLink
-        to="/feed"
-      >View Feed</NavLink>
+      <Button bsStyle="success" bsSize="small" onClick={Home}>
+        View Posts
+      </Button>
     </div>
   );
 };
