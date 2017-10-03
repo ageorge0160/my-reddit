@@ -1,22 +1,25 @@
 import React from 'react';
+
 import {
   BrowserRouter as Router,
   Route
 } from 'react-router-dom';
+
 import NavBar from '../components/NavBar';
 import Home from '../components/Home';
 import Root from '../containers/Root';
+import Posts from '../components/Posts'
+import Show from '../components/Show';
 
-
-const AppContainer = () => {
+const Routes = () => {
   return (
-    <Router>
       <div>
         <NavBar />
         <Route exact path="/" component={Home} />
-        <Route exact path="/posts" component={Root} />
+        <Route path="/posts" component={Posts} />
+          <Route path="/posts/new" component={NewPost} />
+          <Route exact path="/posts/:id" component={Show} />
       </div>
-    </Router>
   );
 };
-export default AppContainer
+export default Routes
