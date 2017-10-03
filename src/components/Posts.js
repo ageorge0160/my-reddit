@@ -23,7 +23,7 @@ Posts.propTypes = {
 
 function mapStateToProps(state, ownProps) {
   return {
-    posts: state:posts
+    posts: state.posts
   }
 }
 
