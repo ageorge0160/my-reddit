@@ -1,5 +1,5 @@
 import fetch from 'isomorphic-fetch'
-import api from '../api/api'
+import api from '../api/postApi'
 import * as types from './actionTypes';
 
 export function loadPosts() {
