@@ -41,11 +41,11 @@ class App extends Component {
     const {selectedSubreddit, posts, isFetching, lastUpdated} = this.props
     return (
       <div className="App">
-        <SubFilter value={selectedSubreddit} onChange={this.handleChange} options={['bouldering', 'climbing', 'sailing', 'backpacking']} />
+        <SubFilter value={selectedSubreddit} onChange={this.handleChange} options={['bouldering', 'climbing', 'hiking']} />
         <p> {lastUpdated && <span> Last updated at {new Date(lastUpdated).toLocaleTimeString()}.{' '}</span>}
           {!isFetching && <button onClick={this.handleRefresh}>Refresh</button>}
         </p>
-        {isFetching && posts.length === 0 && <h2>Loading...</h2>}
+        {isFetching && posts.length === 0 && <h2>Loading....</h2>}
         {!isFetching && posts.length === 0 && <h2>Empty.</h2>}
         {posts.length > 0 &&
           <div style={{opacity: isFetching ? 0.5 : 1}}>

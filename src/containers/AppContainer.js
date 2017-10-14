@@ -5,7 +5,9 @@ import {
 } from 'react-router-dom';
 import NavBar from '../components/NavBar';
 import Home from '../components/Home';
-import Root from '../containers/Root';
+import App from '../containers/App';
+import Header from './Header'
+import Footer from './Footer'
 
 
 const AppContainer = () => {
@@ -13,10 +15,13 @@ const AppContainer = () => {
     <Router>
       <div>
         <NavBar />
+        <Header />
         <Route exact path="/" component={Home} />
-        <Route exact path="/posts" component={Root} />
+        <Route exact path="/posts" component={App} />
+        <Footer />
       </div>
     </Router>
   );
 };
-export default AppContainer
+
+export default AppContainer;

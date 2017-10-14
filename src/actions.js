@@ -1,6 +1,9 @@
 import fetch from 'isomorphic-fetch'
 
 export const SELECT_SUBREDDIT = 'SELECT_SUBREDDIT'
+export const INVALIDATE_SUBREDDIT = 'INVALIDATE_SUBREDDIT'
+export const REQUEST_POSTS = 'REQUEST_POSTS'
+export const RECEIVE_POSTS = 'RECEIVE_POSTS'
 
 export function selectSubreddit(subreddit) {
   return {
@@ -9,8 +12,6 @@ export function selectSubreddit(subreddit) {
   }
 }
 
-export const INVALIDATE_SUBREDDIT = 'INVALIDATE_SUBREDDIT'
-
 export function invalidateSubreddit(subreddit) {
   return {
     type: INVALIDATE_SUBREDDIT,
@@ -18,16 +19,12 @@ export function invalidateSubreddit(subreddit) {
   }
 };
 
-export const REQUEST_POSTS = 'REQUEST_POSTS'
-
 export function requestPosts(subreddit) {
   return {
     type: REQUEST_POSTS,
     subreddit
   }
 }
-
-export const RECEIVE_POSTS = 'RECEIVE_POSTS'
 
 export function receivePosts(subreddit, json) {
   return {
@@ -38,9 +35,20 @@ export function receivePosts(subreddit, json) {
 }
 
 function fetchPosts(subreddit) {
+  debugger
   return dispatch => {
     dispatch(requestPosts(subreddit))
-    return fetch(`https://www.reddit.com/r/${subreddit}.json`)
+    let header = new Headers({
+      'Accept':'application/json',
+      'Content-Type': 'application/json',
+      'Authorization': 'Token token=xxxxx',
+      'Access-Control-Allow-Origin': '*'
+    })
+    return fetch(`https://www.reddit.com/r/${subreddit}.json`, {
+      method: 'GET',
+      mode: 'cors',
+      header: header
+    })
     .then(resp => resp.json())
     .then(json => dispatch(receivePosts(subreddit, json)))
   }
