@@ -35,7 +35,6 @@ export function receivePosts(subreddit, json) {
 }
 
 function fetchPosts(subreddit) {
-  debugger
   return dispatch => {
     dispatch(requestPosts(subreddit))
     let header = new Headers({
